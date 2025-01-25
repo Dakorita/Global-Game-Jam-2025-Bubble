@@ -13,6 +13,7 @@ public class Controller : MonoBehaviour
     public GameObject menu;
     public Image arrow;
     public Image calendar;
+    protected OptionHandler optionHandler;
 
 
     // Start is called before the first frame update
@@ -39,7 +40,6 @@ public class Controller : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log((int)context.ReadValue<float>());
             ChangeSelectedMenu((int)context.ReadValue<float>());
         }
     }

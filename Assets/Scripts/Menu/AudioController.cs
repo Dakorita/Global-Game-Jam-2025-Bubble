@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class AudioController : MonoBehaviour
 {
-    public bool musicMute;
-    public bool soundMute;
+    public bool masterMute;
     public AudioMixer audioMixer;
     public float previusSound = 0;
     public float previusMusic = 0;
@@ -40,34 +39,21 @@ public class AudioController : MonoBehaviour
     {
         audioMixer.SetFloat("Sonidos", volumen.value);
     }
-    public void SoundMute()
+    public void MasterMute()
     {
-        if (soundMute)
+        if (masterMute)
         {
-            soundMute = false;
-            audioMixer.SetFloat("Sonidos", previusSound);
+            masterMute = false;
+            audioMixer.SetFloat("Master", previusSound);
         }
         else
         {
-            soundMute = true;
-            previusSound = GetLevel("Sonidos");
-            audioMixer.SetFloat("Sonidos", -80);
+            masterMute = true;
+            previusSound = GetLevel("Master");
+            audioMixer.SetFloat("Master", -80);
         }
     }
-    public void MusicMute()
-    {
-        if (musicMute)
-        {
-            musicMute = false;
-            audioMixer.SetFloat("Musica", previusMusic);
-        }
-        else
-        {
-            musicMute = true;
-            previusMusic = GetLevel("Musica");
-            audioMixer.SetFloat("Musica", -80);
-        }
-    }
+
 
 
 }

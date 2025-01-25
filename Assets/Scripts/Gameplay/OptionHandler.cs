@@ -22,7 +22,7 @@ public class OptionHandler : MonoBehaviour
 
     }
 
-    public void updateText(int situation)
+    public void UpdateText(int situation)
     {
         switch (situation)
         {
@@ -67,13 +67,13 @@ public class OptionHandler : MonoBehaviour
             case 1:
                 switch (value)
                 {
-                    case 1:
+                    case 0:
                         bossText.text = bossMessage.bossBad;
                         return 1;
-                    case 2:
+                    case 1:
                         bossText.text = bossMessage.bossNeutral;
                         return 0;
-                    case 3:
+                    case 2:
                         bossText.text = bossMessage.bossGood;
                         return -1;
                     default:
@@ -82,13 +82,13 @@ public class OptionHandler : MonoBehaviour
             case 2:
                 switch (value)
                 {
-                    case 1:
+                    case 0:
                         bossText.text = bossMessage.bossBad;
                         return 1;
-                    case 2:
+                    case 1:
                         bossText.text = bossMessage.bossNeutral;
                         return 0;
-                    case 3:
+                    case 2:
                         bossText.text = bossMessage.bossGood;
                         return -1;
                     default:
@@ -97,13 +97,13 @@ public class OptionHandler : MonoBehaviour
             case 3:
                 switch (value)
                 {
-                    case 1:
+                    case 0:
                         bossText.text = bossMessage.bossBad;
                         return 1;
-                    case 2:
+                    case 1:
                         bossText.text = bossMessage.bossNeutral;
                         return 0;
-                    case 3:
+                    case 2:
                         bossText.text = bossMessage.bossGood;
                         return -1;
                     default:
@@ -112,13 +112,13 @@ public class OptionHandler : MonoBehaviour
             case 4:
                 switch (value)
                 {
-                    case 1:
+                    case 0:
                         bossText.text = bossMessage.bossBad;
                         return 1;
-                    case 2:
+                    case 1:
                         bossText.text = bossMessage.bossNeutral;
                         return 0;
-                    case 3:
+                    case 2:
                         bossText.text = bossMessage.bossGood;
                         return -1;
                     default:
@@ -127,13 +127,13 @@ public class OptionHandler : MonoBehaviour
             case 5:
                 switch (value)
                 {
-                    case 1:
+                    case 0:
                         bossText.text = bossMessage.bossBad;
                         return 1;
-                    case 2:
+                    case 1:
                         bossText.text = bossMessage.bossNeutral;
                         return 0;
-                    case 3:
+                    case 2:
                         bossText.text = bossMessage.bossGood;
                         return -1;
                     default:

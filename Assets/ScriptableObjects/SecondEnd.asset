@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e70816247f35814a870bb338951a55d, type: 3}
   m_Name: SecondEnd
   m_EditorClassIdentifier: 
-  finaltext: 
+  finaltext: "Due to concerns in the general populace about the mental health of
+    minorities, the governing party has proposed segregationist laws. \u201CIf they
+    are insane, they should be treated as such\u201D claims the President.\r\n"
   finalimage: {fileID: 0}

@@ -7,19 +7,24 @@ using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
-    protected int selectedValue;
-    protected bool selectedMenu;
+    public int selectedValue;
+    public bool selectedMenu;
     protected int currentQuestion;
+    public int timeInDay;
     public GameObject menu;
     public Image arrow;
     public Image calendar;
-    protected OptionHandler optionHandler;
+    public OptionHandler optionHandler;
+    public Animator animator;
+    public int bubbleValue;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        currentQuestion = 1;
+        NextDay(currentQuestion);
+        StartDay();
     }
 
     // Update is called once per frame
@@ -33,7 +38,6 @@ public class Controller : MonoBehaviour
         if (context.performed)
         {
             ChangeSelectedValue((int)context.ReadValue<float>());
-            selectedValue = 0;
         }
     }
     public void Options(InputAction.CallbackContext context)
@@ -41,6 +45,8 @@ public class Controller : MonoBehaviour
         if (context.performed)
         {
             ChangeSelectedMenu((int)context.ReadValue<float>());
+            selectedValue = 0;
+
         }
     }
     public void Accept(InputAction.CallbackContext context)
@@ -91,12 +97,36 @@ public class Controller : MonoBehaviour
     {
         if (!selectedMenu)
         {
-            optionHandler.OptionSelect(situation, selectedValue);
+            NextDay(situation);
         }
         else
         {
             menu.SetActive(!menu.activeSelf);
         }
+    }
+    public void NextDay(int situation)
+    {
+        bubbleValue += optionHandler.OptionSelect(situation, selectedValue);
+        calendar.enabled = true;
+        optionHandler.UpdateText(situation);
+
+    }
+    public void StartDay()
+    {
+        timeInDay = 15;
+        StartCoroutine(DayRun());
+    }
+    public IEnumerator DayRun()
+    {
+        if (timeInDay == 0)
+        {
+            NextDay(currentQuestion);
+            currentQuestion += 1;
+        }
+        yield return new WaitForSeconds(1);
+        timeInDay -= 1;
+        if (timeInDay >= 0) StartCoroutine(DayRun());
+
     }
 
 }

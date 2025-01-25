@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e70816247f35814a870bb338951a55d, type: 3}
   m_Name: FirstEnd
   m_EditorClassIdentifier: 
-  finaltext: 
+  finaltext: 'All natural crops fail to resist terrible droughts all across the country.
+    Due to lack of new technologies and GMOs, prices skyrocket. Thousands will die
+    of starvation. '
   finalimage: {fileID: 0}

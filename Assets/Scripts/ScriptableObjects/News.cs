@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class News : ScriptableObject
 {
+    [TextArea(10, 100)]
     public string newsBody;
     public string firstOption;
     public string secondOption;

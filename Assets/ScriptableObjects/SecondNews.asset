@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869db7f9b0945b84394770781e6905fe, type: 3}
   m_Name: SecondNews
   m_EditorClassIdentifier: 
-  newsBody: 
-  firstOption: 
-  secondOption: 
-  thirdOption: 
-  flagToRaise: 0
+  newsBody: <b>Low school attendance and poor mental health linked<b> in recent study.
+    Children that fail to attend school not only are <b>less employable<b> but also
+    <b>suffer until adulthood. Poverty, bullying, and racism<b>  found to be some
+    of the <b>main drivers of absenteeism <b>
+  firstOption: Keep your children safe! School and mental health
+  secondOption: Disparity breeds disparity. Children most affected
+  thirdOption: Minorities found to be more propense to mental issues
+  flagToRaise: 2

@@ -22,13 +22,11 @@ public class MenuController : MonoBehaviour
             ChangeSelectedValue((int)context.ReadValue<float>());
         }
     }
-    public void Options(InputAction.CallbackContext context)
+    public void Accept(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            SceneManager.LoadScene("Main", LoadSceneMode.Single);
-
-
+            Action(selectedValue);
         }
     }
 
@@ -44,16 +42,32 @@ public class MenuController : MonoBehaviour
         switch (position)
         {
             case 0:
-                arrow.rectTransform.anchoredPosition = new Vector3(143, 156, 0);
+                arrow.rectTransform.anchoredPosition = new Vector3(-108, -55, 0);
                 break;
             case 1:
-                arrow.rectTransform.anchoredPosition = new Vector3(143, 68, 0);
+                arrow.rectTransform.anchoredPosition = new Vector3(-108, -92, 0);
                 break;
             case 2:
-                arrow.rectTransform.anchoredPosition = new Vector3(143, -28, 0);
+                arrow.rectTransform.anchoredPosition = new Vector3(-108, -126, 0);
                 break;
-            case 3:
-                arrow.rectTransform.anchoredPosition = new Vector3(143, -28, 0);
+
+            default:
+                break;
+        }
+    }
+    public void Action(int value)
+    {
+        switch (value)
+        {
+            case 0:
+                SceneManager.LoadScene("Main", LoadSceneMode.Single);
+                break;
+            case 1:
+                SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+                break;
+            case 2:
+                Application.Quit();
+                Debug.Log("APAGA");
                 break;
             default:
                 break;

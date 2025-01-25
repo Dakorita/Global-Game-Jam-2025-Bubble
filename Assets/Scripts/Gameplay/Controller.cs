@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 
 public class Controller : MonoBehaviour
 {
     public int selectedValue;
     public bool selectedMenu;
-    protected int currentQuestion;
+    public int currentQuestion;
     public int timeInDay;
     public GameObject menu;
     public Image arrow;
@@ -17,7 +18,8 @@ public class Controller : MonoBehaviour
     public OptionHandler optionHandler;
     public Animator animator;
     public int bubbleValue;
-
+    public AudioMixer audioMixer;
+    public float volume;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +46,18 @@ public class Controller : MonoBehaviour
     {
         if (context.performed)
         {
-            ChangeSelectedMenu((int)context.ReadValue<float>());
-            selectedValue = 0;
+            if (!selectedMenu)
+            {
+                ChangeSelectedMenu((int)context.ReadValue<float>());
+                selectedValue = 0;
+            }
+            else
+            {
+                audioMixer.GetFloat("Master", out volume);
+                volume += context.ReadValue<float>();
+                audioMixer.SetFloat("Master", volume);
+            }
+
 
         }
     }
@@ -53,7 +65,7 @@ public class Controller : MonoBehaviour
     {
         if (context.performed)
         {
-            Action(currentQuestion);
+            Action();
         }
     }
     public void ChangeSelectedValue(int value)
@@ -73,13 +85,13 @@ public class Controller : MonoBehaviour
         switch (position)
         {
             case 0:
-                arrow.rectTransform.anchoredPosition = new Vector3(143, 156, 0);
+                arrow.rectTransform.anchoredPosition = new Vector3(123, 156, 0);
                 break;
             case 1:
-                arrow.rectTransform.anchoredPosition = new Vector3(143, 68, 0);
+                arrow.rectTransform.anchoredPosition = new Vector3(123, 68, 0);
                 break;
             case 2:
-                arrow.rectTransform.anchoredPosition = new Vector3(143, -28, 0);
+                arrow.rectTransform.anchoredPosition = new Vector3(123, -28, 0);
                 break;
             default:
                 break;
@@ -87,22 +99,26 @@ public class Controller : MonoBehaviour
     }
     public void MenuOrNot(bool menu)
     {
-        var trueMenu = new Vector3(280, 263, arrow.rectTransform.transform.position.z);
-        var falseMenu = new Vector3(143, 156, arrow.rectTransform.transform.position.z);
+        var trueMenu = new Vector3(280, 263, 0);
+        var falseMenu = new Vector3(123, 156, 0);
         arrow.rectTransform.anchoredPosition = menu ? trueMenu : falseMenu;
 
     }
 
-    public void Action(int situation)
+    public void Action()
     {
         if (!selectedMenu)
         {
-            NextDay(situation);
+            currentQuestion += 1;
+            NextDay(currentQuestion);
         }
         else
         {
+            selectedMenu = !selectedMenu;
+            MenuOrNot(selectedMenu);
             menu.SetActive(!menu.activeSelf);
         }
+
     }
     public void NextDay(int situation)
     {

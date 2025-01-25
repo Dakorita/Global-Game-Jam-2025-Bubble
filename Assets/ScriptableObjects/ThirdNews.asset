@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869db7f9b0945b84394770781e6905fe, type: 3}
   m_Name: ThirdNews
   m_EditorClassIdentifier: 
-  newsBody: 
-  firstOption: 
-  secondOption: 
-  thirdOption: 
+  newsBody: "<b>GPS tech installed in childrens\u2019 toys.</b> Professional concern
+    raises for <b> lack of security features.\r\nToy\u2019sla predicts a surge of
+    stock prices if implemented.</b>\r\n"
+  firstOption: Lost toys, lost children? Beware of the toyman
+  secondOption: GPS toys reported not as secure as can be
+  thirdOption: Big Tech cares about your kids! Say hello to Care-Buddy
   flagToRaise: 0

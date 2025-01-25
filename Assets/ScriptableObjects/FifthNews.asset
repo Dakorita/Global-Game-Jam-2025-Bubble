@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869db7f9b0945b84394770781e6905fe, type: 3}
   m_Name: FifthNews
   m_EditorClassIdentifier: 
-  newsBody: 
-  firstOption: 
-  secondOption: 
-  thirdOption: 
+  newsBody: '<b>President</b> Adrian Almeida <b>spotted exiting a meeting with infamous
+    Warlord</b> Mauricio Colmenas. Colmenas is <b>wanted by the Hague for numerous
+    Crimes against humanity</b>, such as Extermination, Enslavement, and Forced disappearances
+    .If true <b>he, and numerous collaborators could face prison time.  </b>
+
+'
+  firstOption: Does our president hate humanity?
+  secondOption: President faces repercussions after alleged reunion with war criminals.
+  thirdOption: Beware the boogeyman in the hague! Allegations against our estimated
+    president
   flagToRaise: 0

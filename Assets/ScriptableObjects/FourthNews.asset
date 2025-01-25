@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869db7f9b0945b84394770781e6905fe, type: 3}
   m_Name: FourthNews
   m_EditorClassIdentifier: 
-  newsBody: 
-  firstOption: 
-  secondOption: 
-  thirdOption: 
+  newsBody: A <b>mother notified the police her 5 years old son is missing</b>. He
+    was last seen in the park at 10 am. <b>Police still have no leads or suspects,
+    other than the mother. Citizen participation is greatly appreciated.</b>
+  firstOption: We ask for citizen collaboration to find the missing children
+  secondOption: Missing child at the park
+  thirdOption: The mother as the principal suspect for the disappearance of her own
+    son
   flagToRaise: 0

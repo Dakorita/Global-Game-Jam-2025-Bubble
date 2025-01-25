@@ -9,6 +9,6 @@ public class EndScene : ScriptableObject
 {
     [TextArea(10, 100)]
     public string finaltext;
-    public Image finalimage;
+    public Sprite finalimage;
 
 }

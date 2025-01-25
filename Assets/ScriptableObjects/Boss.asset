@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86848faa12ff6340aed35ce47787021, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  bossGood: 
-  bossNeutral: 
-  bossBad: 
+  bossGood: "$$$$$ Good Job Kiddo $$$$$\r"
+  bossNeutral: "meh\u2026.not bad,could be better :/ "
+  bossBad: '>:C That won''t make us any money '

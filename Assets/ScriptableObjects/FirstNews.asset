@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869db7f9b0945b84394770781e6905fe, type: 3}
   m_Name: FirstNews
   m_EditorClassIdentifier: 
-  newsBody: '<b>New breakthrough in GMO technology was<b> achieved recently. This
-    will make <b>food much cheaper and resistant to diseases.<b> Almost all <b>experts
-    claim it will be safe<b> and ready for immediate deployment. '
+  newsBody: '<b>New breakthrough in GMO technology was</b> achieved recently. This
+    will make <b>food much cheaper and resistant to diseases.</b> Almost all <b>experts
+    claim it will be safe</b> and ready for immediate deployment. '
   firstOption: Food for everyone!
   secondOption: Scientist cheapen your shopping cart
   thirdOption: "Claimed safe\u201D experiments now in your food"

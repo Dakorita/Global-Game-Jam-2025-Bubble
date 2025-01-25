@@ -15,4 +15,8 @@ public class SceneManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+    }
 }

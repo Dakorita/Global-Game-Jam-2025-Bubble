@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 public class Controller : MonoBehaviour
 {
+    private bool canAct;
     public int selectedValue;
     public bool selectedMenu;
     public int currentQuestion;
@@ -16,7 +17,9 @@ public class Controller : MonoBehaviour
     public Image arrow;
     public Image calendar;
     public OptionHandler optionHandler;
-    public Animator animator;
+    public Animator animatorBubble;
+    public Animator animatorBoss;
+    public Animator animatorCalendar;
     public int bubbleValue;
     public AudioMixer audioMixer;
     public float volume;
@@ -25,6 +28,8 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canAct = true;
+        selectedMenu = false;
         bubbleValue = 0;
         currentQuestion = 1;
         NextDay(currentQuestion);
@@ -65,8 +70,10 @@ public class Controller : MonoBehaviour
     }
     public void Accept(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && canAct)
         {
+            canAct = false;
+            StartCoroutine(canActAgain());
             Action();
         }
     }
@@ -117,7 +124,9 @@ public class Controller : MonoBehaviour
             currentQuestion += 1;
             NextDay(currentQuestion);
             bubbleValue += optionHandler.OptionSelect(currentQuestion, selectedValue);
-
+            animatorBubble.SetInteger("BubbleValue", bubbleValue);
+            animatorBoss.SetBool("In", true);
+            animatorCalendar.SetBool("CalendarIn", true);
         }
         else
         {
@@ -147,7 +156,8 @@ public class Controller : MonoBehaviour
             currentQuestion += 1;
         }
         yield return new WaitForSeconds(1);
-        timeInDay -= 1;
+
+        if (!menu.activeSelf) timeInDay -= 1;
         if (timeInDay >= 0) StartCoroutine(DayRun());
 
     }
@@ -157,5 +167,10 @@ public class Controller : MonoBehaviour
         //Invoke Animations
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+    }
+    public IEnumerator canActAgain()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canAct = true;
     }
 }

@@ -68,7 +68,7 @@ public class MenuController : MonoBehaviour
         switch (value)
         {
             case 0:
-                SceneManager.LoadScene("Main", LoadSceneMode.Single);
+                SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
                 break;
             case 1:
                 SceneManager.LoadScene("Credits", LoadSceneMode.Single);

@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e70816247f35814a870bb338951a55d, type: 3}
-  m_Name: FifthEnd
+  m_Name: DefaultEnd
   m_EditorClassIdentifier: 
-  finaltext: "Sudden War has erupted between NATO and our country after glorious
-    Leader Adrian Almeida Raises in power as \u201CEmperador\u201D with the help
-    of esteemed companion Mauricio Colmenas. War effort calculated to be immeasurable"
+  finaltext: 'YOU''RE FIRED!! '
   finalimage: {fileID: 0}

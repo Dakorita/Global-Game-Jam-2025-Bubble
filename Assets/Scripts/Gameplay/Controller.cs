@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Audio;
-
+using UnityEngine.SceneManagement;
 public class Controller : MonoBehaviour
 {
     public int selectedValue;
@@ -20,10 +20,12 @@ public class Controller : MonoBehaviour
     public int bubbleValue;
     public AudioMixer audioMixer;
     public float volume;
+    public AudioSource clickSound;
 
     // Start is called before the first frame update
     void Start()
     {
+        bubbleValue = 0;
         currentQuestion = 1;
         NextDay(currentQuestion);
         StartDay();
@@ -32,14 +34,14 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (bubbleValue >= 3) StartCoroutine(GoToEnding());
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            ChangeSelectedValue((int)context.ReadValue<float>());
+            if (!selectedMenu) ChangeSelectedValue((int)context.ReadValue<float>());
         }
     }
     public void Options(InputAction.CallbackContext context)
@@ -70,12 +72,14 @@ public class Controller : MonoBehaviour
     }
     public void ChangeSelectedValue(int value)
     {
+        clickSound.Play();
         selectedValue -= value;
         selectedValue = selectedValue <= -1 ? 2 : (selectedValue >= 3 ? 0 : selectedValue);
         OptionSelect(selectedValue);
     }
     public void ChangeSelectedMenu(int value)
     {
+        clickSound.Play();
         selectedMenu = value != -1;
         MenuOrNot(selectedMenu);
 
@@ -102,6 +106,7 @@ public class Controller : MonoBehaviour
         var trueMenu = new Vector3(280, 263, 0);
         var falseMenu = new Vector3(123, 156, 0);
         arrow.rectTransform.anchoredPosition = menu ? trueMenu : falseMenu;
+        Time.timeScale = menu ? 0 : 1;
 
     }
 
@@ -111,6 +116,8 @@ public class Controller : MonoBehaviour
         {
             currentQuestion += 1;
             NextDay(currentQuestion);
+            bubbleValue += optionHandler.OptionSelect(currentQuestion, selectedValue);
+
         }
         else
         {
@@ -122,7 +129,6 @@ public class Controller : MonoBehaviour
     }
     public void NextDay(int situation)
     {
-        bubbleValue += optionHandler.OptionSelect(situation, selectedValue);
         calendar.enabled = true;
         optionHandler.UpdateText(situation);
 
@@ -132,6 +138,7 @@ public class Controller : MonoBehaviour
         timeInDay = 15;
         StartCoroutine(DayRun());
     }
+
     public IEnumerator DayRun()
     {
         if (timeInDay == 0)
@@ -145,4 +152,10 @@ public class Controller : MonoBehaviour
 
     }
 
+    public IEnumerator GoToEnding()
+    {
+        //Invoke Animations
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+    }
 }

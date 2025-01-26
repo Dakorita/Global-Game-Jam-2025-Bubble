@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e70816247f35814a870bb338951a55d, type: 3}
   m_Name: ThirdEnd
   m_EditorClassIdentifier: 
-  finaltext: 
+  finaltext: "Seven kids missing this week, all linked to the case of the GPS kidnapper.
+    Toy\u2019sla negates breach of security as keep growing and children keep disappearing
+    in our streets.\r\n\r\n"
   finalimage: {fileID: 0}

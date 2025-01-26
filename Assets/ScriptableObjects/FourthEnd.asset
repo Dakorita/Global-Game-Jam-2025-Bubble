@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e70816247f35814a870bb338951a55d, type: 3}
   m_Name: FourthEnd
   m_EditorClassIdentifier: 
-  finaltext: 
+  finaltext: 'Mother of disappeared child, lynched by an angry mob after exiting
+    her house. The kid was found safe 4 hours later, with minor bruises. No culprits
+    have been found for the horrible execution of the woman.  '
   finalimage: {fileID: 0}

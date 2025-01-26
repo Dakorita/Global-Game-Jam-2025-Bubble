@@ -15,7 +15,6 @@ public class OptionHandler : MonoBehaviour
     public TextMeshProUGUI secondOption;
     public TextMeshProUGUI thirdOption;
     public TextMeshProUGUI bossText;
-    public EndingLoader endingLoader;
 
 
     // Update is called once per frame
@@ -77,7 +76,7 @@ public class OptionHandler : MonoBehaviour
                         return 0;
                     case 2:
                         bossText.text = bossMessage.bossGood;
-                        endingLoader.flagsRissen.Add(firstNews.flagToRaise);
+                        EndingLoader.flagsRissen.Add(firstNews.flagToRaise);
                         return 1;
                     default:
                         return 0;
@@ -93,7 +92,7 @@ public class OptionHandler : MonoBehaviour
                         return 0;
                     case 2:
                         bossText.text = bossMessage.bossGood;
-                        endingLoader.flagsRissen.Add(secondNews.flagToRaise);
+                        EndingLoader.flagsRissen.Add(secondNews.flagToRaise);
                         return 1;
                     default:
                         return 0;
@@ -109,7 +108,7 @@ public class OptionHandler : MonoBehaviour
                         return 0;
                     case 2:
                         bossText.text = bossMessage.bossGood;
-                        endingLoader.flagsRissen.Add(thirdNews.flagToRaise);
+                        EndingLoader.flagsRissen.Add(thirdNews.flagToRaise);
                         return 1;
                     default:
                         return 0;
@@ -125,7 +124,7 @@ public class OptionHandler : MonoBehaviour
                         return 0;
                     case 2:
                         bossText.text = bossMessage.bossGood;
-                        endingLoader.flagsRissen.Add(fourthNews.flagToRaise);
+                        EndingLoader.flagsRissen.Add(fourthNews.flagToRaise);
                         return 1;
                     default:
                         return 0;
@@ -135,14 +134,14 @@ public class OptionHandler : MonoBehaviour
                 {
                     case 0:
                         bossText.text = bossMessage.bossBad;
-                        return 1;
+                        return -1;
                     case 1:
                         bossText.text = bossMessage.bossNeutral;
                         return 0;
                     case 2:
                         bossText.text = bossMessage.bossGood;
-                        endingLoader.flagsRissen.Add(fifthNews.flagToRaise);
-                        return -1;
+                        EndingLoader.flagsRissen.Add(fifthNews.flagToRaise);
+                        return 1;
                     default:
                         return 0;
                 }

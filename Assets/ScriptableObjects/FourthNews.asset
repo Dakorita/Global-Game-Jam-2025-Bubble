@@ -19,4 +19,4 @@ MonoBehaviour:
   secondOption: Missing child at the park
   thirdOption: The mother as the principal suspect for the disappearance of her own
     son
-  flagToRaise: 0
+  flagToRaise: 4

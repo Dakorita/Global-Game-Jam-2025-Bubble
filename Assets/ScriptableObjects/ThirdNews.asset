@@ -18,4 +18,4 @@ MonoBehaviour:
   firstOption: Lost toys, lost children? Beware of the toyman
   secondOption: GPS toys reported not as secure as can be
   thirdOption: Big Tech cares about your kids! Say hello to Care-Buddy
-  flagToRaise: 0
+  flagToRaise: 3

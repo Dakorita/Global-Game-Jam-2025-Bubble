@@ -18,4 +18,4 @@ MonoBehaviour:
   firstOption: Food for everyone!
   secondOption: Scientist cheapen your shopping cart
   thirdOption: "Claimed safe\u201D experiments now in your food"
-  flagToRaise: 0
+  flagToRaise: 1

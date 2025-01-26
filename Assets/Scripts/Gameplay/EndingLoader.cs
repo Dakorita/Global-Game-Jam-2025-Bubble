@@ -7,7 +7,7 @@ public class EndingLoader : MonoBehaviour
 {
     public TextMeshProUGUI text;
     public Image image;
-    public List<int> flagsRissen;
+    public static List<int> flagsRissen = new List<int> { };
     public int rand = 0;
     public EndScene pred;
     public EndScene end1;
@@ -21,7 +21,7 @@ public class EndingLoader : MonoBehaviour
     void Start()
     {
         rand = Random.Range(0, flagsRissen.Count);
-        switch (rand)
+        switch (flagsRissen[rand])
         {
             case 1:
                 text.text = end1.finaltext;
@@ -43,7 +43,7 @@ public class EndingLoader : MonoBehaviour
                 text.text = end5.finaltext;
                 image.sprite = end5.finalimage;
                 break;
-            default:
+            case 0:
                 text.text = pred.finaltext;
                 image.sprite = pred.finalimage;
                 break;

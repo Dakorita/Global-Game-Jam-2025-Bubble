@@ -43,7 +43,6 @@ public class Controller : MonoBehaviour
         bubbleValue = 0;
         currentQuestion = 1;
         NextDay(currentQuestion);
-        StartDay();
     }
 
     // Update is called once per frame
@@ -100,6 +99,7 @@ public class Controller : MonoBehaviour
     {
 
         currentQuestion += 1;
+        CrossDay();
         NextDay(currentQuestion);
         bubbleValue += optionHandler.OptionSelect(currentQuestion, selectedValue);
         animatorBubble.SetInteger("BubbleValue", bubbleValue);
@@ -112,50 +112,32 @@ public class Controller : MonoBehaviour
     }
     public void NextDay(int situation)
     {
-        if (currentQuestion == 5)
+        if (currentQuestion == 6)
         {
             StartCoroutine(GoToEnding());
         }
         calendar.enabled = true;
         optionHandler.UpdateText(situation);
-        StartDay();
 
     }
-    public void StartDay()
-    {
-        timeInDay = 15;
-        StartCoroutine(DayRun());
-    }
 
-    public IEnumerator DayRun()
-    {
-        if (timeInDay == 0)
-        {
-            NextDay(currentQuestion);
-            currentQuestion += 1;
-        }
-        yield return new WaitForSeconds(1);
-
-        if (timeInDay >= 0) StartCoroutine(DayRun());
-
-    }
     public void CrossDay()
     {
         switch (currentQuestion)
         {
-            case 1:
+            case 2:
                 Cross1.SetActive(true);
                 break;
-            case 2:
+            case 3:
                 Cross2.SetActive(true);
                 break;
-            case 3:
+            case 4:
                 Cross3.SetActive(true);
                 break;
-            case 4:
+            case 5:
                 Cross4.SetActive(true);
                 break;
-            case 5:
+            case 6:
                 Cross5.SetActive(true);
                 break;
         }

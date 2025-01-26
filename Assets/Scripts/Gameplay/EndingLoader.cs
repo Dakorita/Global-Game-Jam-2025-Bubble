@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EndingLoader : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public Image image;
+
     public static List<int> flagsRissen = new List<int> { };
     public int rand = 0;
     public EndScene pred;
@@ -27,30 +27,30 @@ public class EndingLoader : MonoBehaviour
             {
                 case 1:
                     text.text = end1.finaltext;
-                    image.sprite = end1.finalimage;
+
                     break;
                 case 2:
                     text.text = end2.finaltext;
-                    image.sprite = end2.finalimage;
+
                     break;
                 case 3:
                     text.text = end3.finaltext;
-                    image.sprite = end3.finalimage;
+
                     break;
                 case 4:
                     text.text = end4.finaltext;
-                    image.sprite = end4.finalimage;
+
                     break;
                 case 5:
                     text.text = end5.finaltext;
-                    image.sprite = end5.finalimage;
+
                     break;
             }
         }
         else
         {
             text.text = pred.finaltext;
-            image.sprite = pred.finalimage;
+
         }
 
     }

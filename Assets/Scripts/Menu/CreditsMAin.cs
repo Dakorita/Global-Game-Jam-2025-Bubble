@@ -18,10 +18,6 @@ public class CreditsMAin : MonoBehaviour
     public AudioSource clickSound;
 
 
-    void Awake()
-    {
-        DontDestroyOnLoad(music);
-    }
 
     public void Accept(InputAction.CallbackContext context)
     {

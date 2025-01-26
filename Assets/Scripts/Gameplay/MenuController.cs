@@ -14,14 +14,10 @@ public class MenuController : MonoBehaviour
 
     public OptionHandler optionHandler;
     public Animator animator;
-    public GameObject music;
     public AudioSource clickSound;
 
 
-    void Awake()
-    {
-        DontDestroyOnLoad(music);
-    }
+
     public void Move(InputAction.CallbackContext context)
     {
         if (context.performed)

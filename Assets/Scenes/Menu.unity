@@ -2155,7 +2155,6 @@ MonoBehaviour:
   arrow: {fileID: 206439382}
   optionHandler: {fileID: 0}
   animator: {fileID: 0}
-  music: {fileID: 1887206601}
   clickSound: {fileID: 1533813953}
 --- !u!4 &803281484
 Transform:
@@ -3895,6 +3894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1887206603}
   - component: {fileID: 1887206602}
+  - component: {fileID: 1887206604}
   m_Layer: 0
   m_Name: musica
   m_TagString: Untagged
@@ -4013,6 +4013,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1887206604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887206601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d5bd27582a31884484a2debf711ddbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 0}
 --- !u!1 &1896955368
 GameObject:
   m_ObjectHideFlags: 0

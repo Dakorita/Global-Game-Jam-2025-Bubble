@@ -43,7 +43,7 @@ public class EndingLoader : MonoBehaviour
                 text.text = end5.finaltext;
                 image.sprite = end5.finalimage;
                 break;
-            case 0:
+            default:
                 text.text = pred.finaltext;
                 image.sprite = pred.finalimage;
                 break;

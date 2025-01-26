@@ -13,13 +13,13 @@ public class Controller : MonoBehaviour
     public bool selectedMenu;
     public int currentQuestion;
     public int timeInDay;
-    public GameObject menu;
     public Image arrow;
     public Image calendar;
     public OptionHandler optionHandler;
     public Animator animatorBubble;
-    public Animator animatorBoss;
+    public GameObject menu;
     public Animator animatorCalendar;
+    public Animator animatorBoss;
     public int bubbleValue;
     public AudioMixer audioMixer;
     public float volume;
@@ -29,7 +29,6 @@ public class Controller : MonoBehaviour
     void Start()
     {
         canAct = true;
-        selectedMenu = false;
         bubbleValue = 0;
         currentQuestion = 1;
         NextDay(currentQuestion);
@@ -46,34 +45,16 @@ public class Controller : MonoBehaviour
     {
         if (context.performed)
         {
-            if (!selectedMenu) ChangeSelectedValue((int)context.ReadValue<float>());
+            ChangeSelectedValue((int)context.ReadValue<float>());
         }
     }
-    public void Options(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if (!selectedMenu)
-            {
-                ChangeSelectedMenu((int)context.ReadValue<float>());
-                selectedValue = 0;
-            }
-            else
-            {
-                audioMixer.GetFloat("Master", out volume);
-                volume += context.ReadValue<float>();
-                audioMixer.SetFloat("Master", volume);
-            }
 
-
-        }
-    }
     public void Accept(InputAction.CallbackContext context)
     {
         if (context.performed && canAct)
         {
             canAct = false;
-            StartCoroutine(canActAgain());
+            StartCoroutine(CanActAgain());
             Action();
         }
     }
@@ -84,13 +65,7 @@ public class Controller : MonoBehaviour
         selectedValue = selectedValue <= -1 ? 2 : (selectedValue >= 3 ? 0 : selectedValue);
         OptionSelect(selectedValue);
     }
-    public void ChangeSelectedMenu(int value)
-    {
-        clickSound.Play();
-        selectedMenu = value != -1;
-        MenuOrNot(selectedMenu);
 
-    }
     public void OptionSelect(int position)
     {
         switch (position)
@@ -108,38 +83,30 @@ public class Controller : MonoBehaviour
                 break;
         }
     }
-    public void MenuOrNot(bool menu)
-    {
-        var trueMenu = new Vector3(280, 263, 0);
-        var falseMenu = new Vector3(123, 156, 0);
-        arrow.rectTransform.anchoredPosition = menu ? trueMenu : falseMenu;
-        Time.timeScale = menu ? 0 : 1;
 
-    }
 
     public void Action()
     {
-        if (!selectedMenu)
-        {
-            currentQuestion += 1;
-            NextDay(currentQuestion);
-            bubbleValue += optionHandler.OptionSelect(currentQuestion, selectedValue);
-            animatorBubble.SetInteger("BubbleValue", bubbleValue);
-            animatorBoss.SetBool("In", true);
-            animatorCalendar.SetBool("CalendarIn", true);
-        }
-        else
-        {
-            selectedMenu = !selectedMenu;
-            MenuOrNot(selectedMenu);
-            menu.SetActive(!menu.activeSelf);
-        }
+
+        currentQuestion += 1;
+        NextDay(currentQuestion);
+        bubbleValue += optionHandler.OptionSelect(currentQuestion, selectedValue);
+        animatorBubble.SetInteger("BubbleValue", bubbleValue);
+        animatorBoss.SetBool("In", true);
+        animatorCalendar.SetBool("CalendarIn", true);
+        StartCoroutine(ExitAnimations());
+
 
     }
     public void NextDay(int situation)
     {
+        if (currentQuestion == 5)
+        {
+            StartCoroutine(GoToEnding());
+        }
         calendar.enabled = true;
         optionHandler.UpdateText(situation);
+        StartDay();
 
     }
     public void StartDay()
@@ -157,7 +124,6 @@ public class Controller : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
 
-        if (!menu.activeSelf) timeInDay -= 1;
         if (timeInDay >= 0) StartCoroutine(DayRun());
 
     }
@@ -165,12 +131,18 @@ public class Controller : MonoBehaviour
     public IEnumerator GoToEnding()
     {
         //Invoke Animations
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
-    public IEnumerator canActAgain()
+    public IEnumerator CanActAgain()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.7f);
         canAct = true;
+    }
+    public IEnumerator ExitAnimations()
+    {
+        yield return new WaitForSeconds(1);
+        animatorBoss.SetBool("In", false);
+        animatorCalendar.SetBool("CalendarIn", false);
     }
 }

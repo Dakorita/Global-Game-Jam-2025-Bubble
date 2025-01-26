@@ -27,7 +27,7 @@ public class CreditsMAin : MonoBehaviour
     {
         if (context.performed)
         {
-            SceneManager.LoadScene("MEnu", LoadSceneMode.Single);
+            SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }
     }
 

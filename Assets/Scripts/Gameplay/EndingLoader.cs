@@ -20,34 +20,39 @@ public class EndingLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rand = Random.Range(0, flagsRissen.Count);
-        switch (flagsRissen[rand])
+        if (flagsRissen.Count != 0)
         {
-            case 1:
-                text.text = end1.finaltext;
-                image.sprite = end1.finalimage;
-                break;
-            case 2:
-                text.text = end2.finaltext;
-                image.sprite = end2.finalimage;
-                break;
-            case 3:
-                text.text = end3.finaltext;
-                image.sprite = end3.finalimage;
-                break;
-            case 4:
-                text.text = end4.finaltext;
-                image.sprite = end4.finalimage;
-                break;
-            case 5:
-                text.text = end5.finaltext;
-                image.sprite = end5.finalimage;
-                break;
-            default:
-                text.text = pred.finaltext;
-                image.sprite = pred.finalimage;
-                break;
+            rand = Random.Range(0, flagsRissen.Count);
+            switch (flagsRissen[rand])
+            {
+                case 1:
+                    text.text = end1.finaltext;
+                    image.sprite = end1.finalimage;
+                    break;
+                case 2:
+                    text.text = end2.finaltext;
+                    image.sprite = end2.finalimage;
+                    break;
+                case 3:
+                    text.text = end3.finaltext;
+                    image.sprite = end3.finalimage;
+                    break;
+                case 4:
+                    text.text = end4.finaltext;
+                    image.sprite = end4.finalimage;
+                    break;
+                case 5:
+                    text.text = end5.finaltext;
+                    image.sprite = end5.finalimage;
+                    break;
+            }
         }
+        else
+        {
+            text.text = pred.finaltext;
+            image.sprite = pred.finalimage;
+        }
+
     }
 
     // Update is called once per frame

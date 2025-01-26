@@ -24,11 +24,22 @@ public class Controller : MonoBehaviour
     public AudioMixer audioMixer;
     public float volume;
     public AudioSource clickSound;
+    public AudioSource bossMessage;
+    public GameObject Cross1;
+
+    public GameObject Cross2;
+
+    public GameObject Cross3;
+
+    public GameObject Cross4;
+
+    public GameObject Cross5;
 
     // Start is called before the first frame update
     void Start()
     {
-        canAct = true;
+        canAct = false;
+        StartCoroutine(CanActAgain());
         bubbleValue = 0;
         currentQuestion = 1;
         NextDay(currentQuestion);
@@ -94,6 +105,7 @@ public class Controller : MonoBehaviour
         animatorBubble.SetInteger("BubbleValue", bubbleValue);
         animatorBoss.SetBool("In", true);
         animatorCalendar.SetBool("CalendarIn", true);
+        bossMessage.Play();
         StartCoroutine(ExitAnimations());
 
 
@@ -127,7 +139,27 @@ public class Controller : MonoBehaviour
         if (timeInDay >= 0) StartCoroutine(DayRun());
 
     }
-
+    public void CrossDay()
+    {
+        switch (currentQuestion)
+        {
+            case 1:
+                Cross1.SetActive(true);
+                break;
+            case 2:
+                Cross2.SetActive(true);
+                break;
+            case 3:
+                Cross3.SetActive(true);
+                break;
+            case 4:
+                Cross4.SetActive(true);
+                break;
+            case 5:
+                Cross5.SetActive(true);
+                break;
+        }
+    }
     public IEnumerator GoToEnding()
     {
         //Invoke Animations
@@ -145,4 +177,5 @@ public class Controller : MonoBehaviour
         animatorBoss.SetBool("In", false);
         animatorCalendar.SetBool("CalendarIn", false);
     }
+
 }
